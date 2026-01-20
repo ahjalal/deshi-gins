@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অর্ডার কনফার্মেশন</title>
+    <!-- Tailwind CSS & DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style> body { font-family: sans-serif; background: #f0fdf4; } </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="card w-full max-w-lg bg-white shadow-xl border-t-4 border-green-600">
+        <div class="card-body text-center">
+            <h1 class="text-3xl font-bold text-red-700">অভিনন্দন! 🎉</h1>
+            <p>আপনার অর্ডারটি সম্পূর্ণ হয়েছে আমাদের আপনার পণ্যটি ৩-৪ দিনের মধ্যে আপনার কাছে পৌঁছাবে ইনশাহআল্লাহ।  আপনার মোবাইল নম্বর এ  ডেলিভারি রাইডার যোগাযোগ করবেন। </p>
+            <div class="bg-gray-100 p-4 rounded mt-4 text-left">
+                <p><strong>অর্ডার আইডি:</strong> <span id="oid" class="text-red-600 font-bold">...</span></p>
+                <p><strong>নাম:</strong> <span id="oname">...</span></p>
+                <p><strong>সর্বমোট:</strong> <span id="ototal" class="text-green-700 font-bold">...</span></p>
+            </div>
+            <a href="#" id="call_btn" class="btn btn-success mt-6 w-full text-white">কল করুন: <span id="ophone">...</span></a>
+            <a href="index.html" class="btn btn-ghost mt-2">হোম পেজে যান</a>
+        </div>
+    </div>
+    <script>
+        const data = JSON.parse(localStorage.getItem('successOrderData'));
+        if(data) {
+            document.getElementById('oid').innerText = '#' + data.orderId;
+            document.getElementById('oname').innerText = data.name;
+            document.getElementById('ototal').innerText = '৳ ' + data.total;
+            document.getElementById('ophone').innerText = data.supportPhone;
+            document.getElementById('call_btn').href = 'tel:' + data.supportPhone;
+        } else { window.location.href = 'index.html'; }
+    </script>
+</body>
+</html>

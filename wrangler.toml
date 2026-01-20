@@ -1,0 +1,3 @@
+name = "deshi-gins"
+main = "index.js"
+compatibility_date = "2026-01-01"

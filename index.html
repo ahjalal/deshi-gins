@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>জিনসেং ক্যাপসুল - প্রিমিয়াম আয়ুর্বেদিক সল্যুশন</title>
+    
+    <!-- Fonts & Libs -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+     <!-- Tailwind CSS & DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- CUSTOM CSS (ডিজাইন ঠিক করার জন্য এটা জরুরি) -->
+    <style>
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f8fafc; overflow-x: hidden; }
+        
+        /* Premium Background Gradient */
+        .premium-bg { 
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%); 
+        }
+        
+        /* Glass Effect Card */
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.95); 
+            border: 2px solid #e2e8f0; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+        }
+        
+        /* Custom Bullet Points */
+        .feature-list li {
+            position: relative; padding-left: 40px; margin-bottom: 15px;
+            font-size: 1.15rem; color: #1f2937; font-weight: 700; line-height: 1.6;
+        }
+        .feature-list li::before {
+            content: '✔'; position: absolute; left: 0; top: 4px; height: 28px; width: 28px;
+            background: #16a34a; color: #fff; border-radius: 50%; text-align: center;
+            line-height: 28px; font-size: 16px; font-weight: bold;
+        }
+
+        /* Pulse Animation Red */
+        .pulse-btn {
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            animation: pulse-red 2s infinite;
+            border: none;
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.5);
+        }
+        @keyframes pulse-red {
+            0% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+            100% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+        }
+
+        /* Input Styling */
+        .input-premium { 
+            background-color: #f9fafb; 
+            border: 2px solid #d1d5db; 
+            font-size: 16px; 
+            transition: all 0.3s; 
+        }
+        .input-premium:focus { 
+            background-color: #fff; 
+            border-color: #16a34a; 
+            outline: none; 
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+        }
+
+        /* Sticky Footer */
+        .sticky-footer {
+            position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 12px 20px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.15); z-index: 40;
+            display: flex; justify-content: space-between; align-items: center; border-top: 4px solid #dc2626;
+        }
+        @media (min-width: 769px) { .sticky-footer { display: none; } }
+
+        /* Popup Notification */
+        .custom-pop {
+            position: fixed; bottom: 80px; left: 20px; z-index: 9999;
+            background: #fff; padding: 10px 15px; border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: flex; align-items: center; gap: 12px; max-width: 320px; border: 1px solid #e5e7eb;
+            animation: slideInLeft 0.5s ease-out forwards;
+        }
+        .pop-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #16a34a; }
+        .pop-content h6 { font-size: 14px; font-weight: bold; color: #1f2937; margin: 0; line-height: 1.2; }
+        .pop-content p { font-size: 12px; color: #4b5563; margin: 0; line-height: 1.3; }
+        .highlight-time { color: #d97706; font-size: 11px; font-weight: bold; display: block; margin-bottom: 2px;}
+
+        @media (max-width: 768px) {
+            .custom-pop { bottom: auto; top: 15px; left: 50%; transform: translateX(-50%); width: 92%; animation: slideDownMobile 0.5s ease-out forwards; border-radius: 12px; }
+        }
+        @keyframes slideInLeft { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideDownMobile { from { transform: translate(-50%, -100%); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+    </style>
+
+
+    <!-- Meta Pixel Code -->
+    <!-- Cloudflare Proxy Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    // Cloudflare Worker URL
+    t.src='https://herboo.store/fb-pixel.js'; 
+    s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    // UPDATED: Your Real Pixel ID
+    fbq('init', '2726193271078831'); 
+    fbq('track', 'PageView');
+    </script>
+    
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2726193271078831&ev=PageView&noscript=1"
+    /></noscript>
+  
+    <!-- End Meta Pixel Code -->
+</head>
+<body class="antialiased text-gray-900">
+
+    <!-- Header -->
+    <header class="premium-bg text-white py-8 md:py-12 text-center relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="container mx-auto px-4 relative z-10" data-aos="fade-down">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">জিনসেং ক্যাপসুল</h1>
+            <div class="inline-block bg-white/20 backdrop-blur border border-white/30 px-6 py-2 rounded-full mt-2">
+                <p class="text-lg md:text-2xl font-bold text-yellow-300">👑 সে'ক্সের রাজা - রাতে রাজত্ব করতে সাথে রাখুন 👑</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-8 max-w-5xl">
+        <div class="glass-card rounded-3xl p-6 md:p-10" data-aos="fade-up">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                    <div class="relative">
+                        <!-- Product Image -->
+                        <img src="ginseng.png" alt="Original Ginseng" class="w-full rounded-2xl shadow-xl border-4 border-white transform hover:scale-105 transition duration-500">
+                        <img src="ginseng2.png" alt="Original Ginseng" class="w-full rounded-2xl shadow-xl border-4 border-white transform hover:scale-105 transition duration-500">
+                        <img src="ginseng3.webp" alt="Original Ginseng" class="w-full rounded-2xl shadow-xl border-4 border-white transform hover:scale-105 transition duration-500">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-bold px-4 py-2 rounded-full animate-bounce shadow-lg">অরিজিনাল পণ্য</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-green-900 mb-6 leading-snug">
+                        কোনো প্রকার পার্শ্বপ্রতিক্রিয়া ছাড়াই <br> <span class="text-red-600">স্থায়ী সমাধান</span> চান?
+                    </h2>
+                    <ul class="feature-list">
+                        <li>হস্তমৈথুনের ঘাটতি পূরণ করে এবং <span class="text-red-600 bg-red-50 px-1 rounded">স্থায়ীভাবে</span> সমস্যার সমাধান করে।</li>
+                        <li>লিঙ্গে রক্ত সঞ্চালন বাড়িয়ে একে লোহার মতো শক্ত ও মোটা করে।</li>
+                        <li> সময় বাড়ে ১০ থেকে ১৫ মিনিট ,বীর্য গাঢ় করে। </li>
+                        <li>ডায়াবেটিস ও হার্টের রোগীদের জন্য ১০০% নিরাপদ।</li>
+                    </ul>
+                    <div class="mt-8">
+                        <button  onclick="scrollToOrder()" class="main-cta-btn btn btn-lg w-full bg-red-600 hover:bg-red-700 text-white rounded-full text-xl font-bold pulse-btn shadow-xl">অর্ডার করতে ক্লিক করুন 👉</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- DYNAMIC CONTACT SECTION -->
+<div class="mt-8 bg-blue-50 border-2 border-blue-100 rounded-xl p-6 text-center shadow-sm">
+    <p class="text-gray-600 font-bold text-lg mb-2">কোনো প্রশ্ন আছে? প্রয়োজনে কল করুন:</p>
+    
+    <a href="tel:01958488957" id="section_call_link" class="inline-flex items-center justify-center gap-3 text-3xl md:text-4xl font-extrabold text-blue-600 hover:text-blue-800 transition-transform transform hover:scale-105 font-num">
+        <!-- Phone Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-10 md:w-10 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        <span id="section_call_number">01958488957</span>
+    </a>
+    
+    <p class="text-sm text-gray-500 mt-2">সকাল ১০টা থেকে রাত ১০টা পর্যন্ত খোলা</p>
+</div>
+
+    <!-- Reviews Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl md:text-3xl font-extrabold mb-8 text-gray-800">সম্মানিত কাস্টমারদের রিভিউ</h3>
+            <div class="carousel w-full max-w-lg mx-auto rounded-2xl shadow-2xl bg-white border-4 border-white p-2">
+                <div id="item1" class="carousel-item w-full"><img src="review1.webp" class="w-full object-contain rounded-xl" /></div> 
+                <div id="item2" class="carousel-item w-full"><img src="review2.webp" class="w-full object-contain rounded-xl" /></div> 
+            </div>
+            <div class="flex justify-center w-full py-4 gap-2">
+                <a href="#item1" class="btn btn-xs btn-circle bg-green-600 text-white">1</a> 
+                <a href="#item2" class="btn btn-xs btn-circle bg-green-600 text-white">2</a> 
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="order-section" class="py-16 bg-green-900 relative ">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')]"></div>
+        <div class="container mx-auto px-4 max-w-5xl relative z-10 ">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">অর্ডার কনফার্ম করুন</h2>
+                <p class="text-green-200 text-xl">নিচের ফর্মটি পূরণ করুন, ডেলিভারি চার্জ ফ্রি!</p>
+            </div>
+
+            <div class="flex flex-col-reverse md:flex-row gap-8">
+                <!-- Form Area -->
+                <!-- Form Area -->
+<div class="w-full md:w-3/5 bg-white p-6 md:p-8 rounded-2xl shadow-2xl">
+    
+    <form id="checkoutForm">
+        
+        <!-- Product ID -->
+        <input type="hidden" id="product_id" value="63"> <!-- তোমার প্রোডাক্ট আইডি দাও -->
+
+        <!-- 1. Name -->
+        <div class="form-control mb-4" id="order-sections">
+            <label class="label"><span class="label-text font-bold text-lg">আপনার নাম *</span></label>
+            <input type="text" id="billing_name" required placeholder="নাম লিখুন" class="input input-lg w-full input-premium">
+        </div>
+
+        <!-- 2. Phone -->
+        <div class="form-control mb-4">
+            <label class="label"><span class="label-text font-bold text-lg">মোবাইল নাম্বার *</span></label>
+            <input type="tel" id="billing_phone" required placeholder="১১ ডিজিটের নাম্বার লিখুন" class="input input-lg w-full input-premium">
+        </div>
+
+        <!-- 3. Address (Combined) -->
+        <div class="form-control mb-6">
+            <label class="label"><span class="label-text font-bold text-lg">সম্পূর্ণ ঠিকানা *</span></label>
+            <textarea id="billing_address" required placeholder="বাসা নং, রোড নং, গ্রাম/মহল্লা, থানা ও জেলা..." class="textarea textarea-lg w-full input-premium h-24"></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn" class="main-cta-btn btn w-full bg-red-600 hover:bg-red-700 text-white font-extrabold text-2xl py-4 h-auto rounded-xl shadow-xl pulse-btn">
+            অর্ডার কনফার্ম করুন <br> <span class="text-base font-normal" id="dynamic_btn_price">(৳ ৭০০ টাকা)</span>
+        </button>
+    </form>
+</div>
+
+                <!-- Summary Area -->
+                <div class="w-full md:w-2/5 bg-white p-6 rounded-2xl shadow-2xl h-fit border-t-8 border-red-600">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">অর্ডার সামারি</h3>
+                    <div class="flex  items-center gap-4 mb-6">
+                        <img src="ginseng.png" class="w-20 h-20 rounded-lg border-2 border-green-500 object-cover" alt="Product">
+                        <div><h4 class="font-bold text-lg">জিনসেং ক্যাপসুল</h4><span class="badge badge-success text-white font-bold">৩০ পিস</span></div>
+                    </div>
+                    <div class="space-y-3 text-lg font-bold text-gray-600">
+                         <div class="flex justify-between text-green-700"><span>ডিসকাউন্ট :</span><span>৪০ % বেশি !!</span></div>
+                        <div class="flex justify-between text-blue-600"><span>ডেলিভারি চার্জ:</span><span>ফ্রি</span></div>
+                        <div class="flex justify-between"><span>রেগুলার মূল্য:</span><span class="line-through text-red-400" id="dynamic_regular_price">১২০০ টাকা</span></div>
+                        <div class="flex justify-between text-green-700"><span>আজকের অফার:</span><span id="dynamic_sale_price">৭০০ টাকা</span></div>
+                       
+                        <div class="divider"></div>
+                        <div class="flex justify-between text-2xl font-extrabold text-red-600"><span>সর্বমোট:</span><span id="dynamic_total_price">৳ ৭০০ টাকা</span></div>
+                    </div>
+                    <div class="mt-8 bg-red-50 border border-red-200 p-4 rounded-xl">
+                        <p class="text-sm font-bold text-red-600 mb-2">🔥 স্টক শেষ হয়ে যাচ্ছে!</p>
+                        <div class="w-full bg-gray-300 rounded-full h-3"><div class="bg-red-600 h-3 rounded-full" style="width: 85%" id="stock-bar"></div></div>
+                        <p class="text-sm text-right mt-2 font-bold text-gray-700">মাত্র <span id="stock-count" class="text-red-600 text-lg">১৩</span> টি বাকি</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="sticky-footer">
+        <div class="text-left pl-2">
+            <p class="text-xs text-gray-500 font-bold">অফার শেষ হতে:</p>
+            <p class="font-bold text-red-600 text-xl" id="countdown">10:00</p>
+        </div>
+        <button onclick="scrollToOrder()" class="main-cta-btn bg-red-600 text-white px-8 py-3 rounded-full font-bold shadow-lg text-lg">অর্ডার করুন 👉</button>
+    </div>
+<!-- ========================================== -->
+    <!-- FLOATING CONTACT BUTTONS (Whatsapp & Call) -->
+    <!-- ========================================== -->
+    <div class="fixed bottom-24 right-4 flex flex-col gap-3 z-50">
+        
+        <!-- WhatsApp Button -->
+        <a id="float_whatsapp" href="#" target="_blank" class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition transform hover:scale-110 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+        </a>
+
+        <!-- Call Button -->
+        <a id="float_call" href="#" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition transform hover:scale-110 flex items-center justify-center animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+        </a>
+    </div>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
